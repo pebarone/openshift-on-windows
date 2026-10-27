@@ -1,0 +1,29 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: hello
+  namespace: demo
+spec:
+  host: hello-demo.apps.localtest.me
+  to:
+    kind: Service
+    name: hello
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: console
+  namespace: openshift-console
+spec:
+  host: console.apps.localtest.me
+  to:
+    kind: Service
+    name: console
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None
